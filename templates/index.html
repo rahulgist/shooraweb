@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+        {% if request.path == '/'%}
+        <!-- Inspiro Slider -->
+        <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="2600" data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
+            {% for n in sliders %}
+            <!-- Slide 1 -->
+            <div class="slide background-image" style="background-image:url('/media/{{n.slider_images}}');">
+                <div class="bg-overlay"></div>
+                <div class="container">
+                    <div class="slide-captions text-center">
+                        <!-- Captions -->
+                        {% comment %} <h2 class="text-uppercase text-medium text-light">{{n.slider_title}}</h2> {% endcomment %}
+                        {% if n.slider_short_description %}<p class="lead text-light">{{n.slider_short_description}}</p> {% endif %}
+
+                        <!-- end: Captions -->
+                    </div>
+                </div>
+            </div>
+            <!-- end: Slide 1 -->
+            {% endfor %}
+
+            <!-- end: Slide 2 -->
+        </div>
+        <!--end: Inspiro Slider -->
+        {% endif %}
+        <!-- WHAT WE DO -->
+        <section class="background-grey" style="padding: 7px 0 !important;">
+            <div class="container">
+                <div class="heading-text heading-section">
+                    <h4>{{homepage.heading1}}</h4>
+                    <span style="text-align: justify !important" class="lead">{{homepage.heading1_description | safe}}</span>
+                </div>
+              
+            </div>
+        </section>
+        <!-- END WHAT WE DO -->
+
+        <!-- PORTFOLIO -->
+        <section class="p-b-0" style="padding: 10px 0; !important">
+            <div class="container">
+                <div class="heading-text heading-section">
+                    <h4>{{homepage.heading2}}</h4>
+                    <span style="text-align: justify !important" class="lead">{{homepage.heading2_description | safe}}</span>
+                </div>
+            </div>
+          
+        </section>
+        <!-- end: PORTFOLIO -->
+       
+        <!-- COUNTERS -->
+        <section class="text-light p-t-150 p-b-150" data-bg-parallax="images/texture2.jpg">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+
+                        <div class="text-center">
+                            <div class="icon"><i class="fa fa-3x fa-globe"></i></div>
+                            <div class="counter"> <span data-speed="1000" data-refresh-interval="50" data-to="{{setting.id}}" data-from="0" data-seperator="true"></span> </div>
+                            <div class="seperator seperator-small"></div>
+                            <p>No of State</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <div class="text-center">
+                            <div class="icon"><i class="fa fa-3x fa-city"></i></div>
+                            <div class="counter"> <span data-speed="1200" data-refresh-interval="23" data-to="{{setting.district}}" data-from="0" data-seperator="true"></span> </div>
+                            <div class="seperator seperator-small"></div>
+                            <p>No Of District</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <div class="text-center">
+                            <div class="icon"><i class="fa fa-3x fa-network-wired"></i></div>
+                            <div class="counter"> <span data-speed="1300" data-refresh-interval="12" data-to="{{setting.branch}}" data-from="0" data-seperator="true"></span> </div>
+                            <div class="seperator seperator-small"></div>
+                            <p>No Of Branches</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <div class="text-center">
+                            <div class="icon"><i class="fa fa-3x fa-smile-o"></i></div>
+                            <div class="counter"> <span data-speed="1350" data-refresh-interval="50" data-to="{{setting.alc}}" data-from="0" data-seperator="true"></span> </div>
+                            <div class="seperator seperator-small"></div>
+                            <p>SATISFIED CLIENTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end: COUNTERS -->
+
+       
+        <!-- CLIENTS -->
+        <section class="p-t-60">
+            <div class="container">
+                <div class="heading-text heading-section text-center">
+                    <h2>Business Partner's</h2>
+                    <span class="lead">{{homepage.short_description | safe}}</span>
+                </div>
+                <div class="carousel client-logos" data-items="6" data-items-sm="4" data-items-xs="3" data-items-xxs="2" data-margin="20" data-arrows="false" data-autoplay="true" data-autoplay="3000" data-loop="true">
+                   {% for n in partner %}
+                    <div>
+                        <a href="#"><img alt="" src="media/{{n.Business_partner}}"> </a>
+                    </div>
+                   {% endfor %}
+                 
+                </div>
+            </div>
+        </section>
+        <!-- end: CLIENTS -->
+{% endblock %}
+     

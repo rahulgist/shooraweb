@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Sevendias" />
+    <meta name="description" content="Shoora Welfare Foundation Official Website">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>Home | Shoora Welfare Foundation</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="static/css/plugins.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <style>
+        light i, .text-light li, .text-light label, .text-light div:not(.alert), .text-light span:not(.btn-label) {
+            color:  !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Body Inner -->
+    <div class="body-inner">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="header-inner">
+                <div class="container">
+                    <!--Logo-->
+                    <div id="logo"><img src="media/{{setting.website_logo}}" /></div>
+                    <!--End: Logo-->
+                   
+                  
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger"> <a class="lines-button x"><span class="lines"></span></a> </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu">
+                        <div class="container">
+                            <nav>
+                                <ul>
+                                    {% for m_menu in get_main_menu %}
+                                    <li class="{% if m_menu.has_sub_menu == 0 %}dropdown {% endif %}">
+                                        <a href="{{m_menu.web_url}}">{{m_menu.title}}</a>
+                                        {% if m_menu.has_sub_menu %}
+                                        <ul class="dropdown-menu">
+                                            {% for sm_menu in get_sub_menu %}
+                                                {% if m_menu.id == sm_menu.menuhandler_id  %}
+                                                <li><a href="{{sm_menu.subweb_url}}">{{sm_menu.sub_title}}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </li> 
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </div>
+        </header>
+        <!-- end: Header -->

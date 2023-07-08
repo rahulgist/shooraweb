@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+        {% if request.path == '/'%}
+        <!-- Inspiro Slider -->
+        <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="2600" data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
+            {% for n in sliders %}
+            <!-- Slide 1 -->
+            <div class="slide background-image" style="background-image:url('/media/{{n.slider_images}}');">
+                <div class="bg-overlay"></div>
+                <div class="container">
+                    <div class="slide-captions text-center">
+                        <!-- Captions -->
+                        {% comment %} <h2 class="text-uppercase text-medium text-light">{{n.slider_title}}</h2> {% endcomment %}
+                        {% if n.slider_short_description %}<p class="lead text-light">{{n.slider_short_description}}</p> {% endif %}
+
+                        <!-- end: Captions -->
+                    </div>
+                </div>
+            </div>
+            <!-- end: Slide 1 -->
+            {% endfor %}
+
+            <!-- end: Slide 2 -->
+        </div>
+        <!--end: Inspiro Slider -->
+        {% endif %}
+
+        <!-- Pricing Table Default -->
+        <section id="content">
+            <div class="container">
+            <!-- WHAT WE DO -->
+        <section class="background-grey" style="padding: 10px 0 !important">
+            <div class="container">
+                <div class="heading-text heading-section">
+                    <h4>Loan Products</h4>
+                    <span  class="lead">
+                        The Joint Liability Group (JLG) loan model enables a group of individuals, typically five, to secure loans for income-generating activities by forming a group. Under this model, each group member is equally responsible for repaying the loan.<br><br>
+                        Shoora offers unsecured loans to eligible applicants who meet specific criteria. To qualify,
+                        the applicant must be a married woman who has lived in the same location for at least three years. 
+                        The woman must also have regular business cash inflows and outflows. <br><br>
+                        The first loan cycle is available to clients between the ages of 21 and 55 at the time of application, while subsequent loan cycles are available to clients under the age of 58. <br><br>
+                        Additionally, clients must have a good understanding of the loan and their business to ensure smooth repayment.
+
+                    </span>
+                    
+                </div>
+              
+            </div>
+        </section>
+        <!-- END WHAT WE DO -->
+                <div class="row pricing-table colored">
+                    {% for n in loanproduct %}
+                    <div class="col-lg-4 col-md-12 col-12 my-border">
+                        <div class="plan">
+                            <div class="plan-header" style="background-image:url(/media/{{n.loan_image}}) !important; background-size: 100% 200px">
+                                <h4>{{n.loan_title}}</h4>
+                                <p class="text-muted"><img src="/static/images/pro1.png" style="height:90px;"></p>
+                            </div>
+                            <div class="plan-list">
+                                <ul>
+                                    <li style="border-bottom: 1px solid grey; ">Loan Amount: {{n.loan_amount}}</li>
+                                    <li style="border-bottom: 1px solid grey; ">Interest Rate: {{n.loan_roi}}</li>
+                                    <li style="border-bottom: 1px solid grey; ">Loan Tennure: {{n.loan_tenure}}</li>
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    
+                </div>
+                <!-- end: Pricing Table Colored four columns-->
+            </div>
+        </section>
+        <!-- end: Pricing Table Default -->
+      
+{% endblock %}   

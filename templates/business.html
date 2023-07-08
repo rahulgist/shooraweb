@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block content %}
+      
+        {% if request.path == '/'%}
+        <!-- Inspiro Slider -->
+        <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="2600" data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
+            {% for n in sliders %}
+            <!-- Slide 1 -->
+            <div class="slide background-image" style="background-image:url('/media/{{n.slider_images}}');">
+                <div class="bg-overlay"></div>
+                <div class="container">
+                    <div class="slide-captions text-center">
+                        <!-- Captions -->
+                        {% comment %} <h2 class="text-uppercase text-medium text-light">{{n.slider_title}}</h2> {% endcomment %}
+                        {% if n.slider_short_description %}<p class="lead text-light">{{n.slider_short_description}}</p> {% endif %}
+
+                        <!-- end: Captions -->
+                    </div>
+                </div>
+            </div>
+            <!-- end: Slide 1 -->
+            {% endfor %}
+
+            <!-- end: Slide 2 -->
+        </div>
+        <!--end: Inspiro Slider -->
+        {% endif %}
+  
+    <section id="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="content col-lg-12">                
+                    <div class="row">
+                        
+                        {% for bp in businessprocess %}
+                                <div class="col-lg-12 mb-4">
+                                    <h4>{{bp.title}}</h4>
+                                </div>
+                                {% for bpd in businessprocessdescription %}
+                                    {% if bp.id == bpd.businessprocess_id%}
+                                    <div class="col-lg-4">
+                                        <div class="card mb-3">
+                                            <div class="card-header"><h3>{{bpd.title}}</h3></div>
+                                            <div class="card-body text-white {{bpd.color}}">
+                                                <p class="card-text">{{bpd.description | safe}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="col-lg-12">
+                                    <div class="line"></div>
+                                </div>
+                        {% endfor %}
+                               
+                          
+                       
+                        {% comment %} <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-header"><h3>Branch Survey</h3></div>
+                                <div class="card-body text-white bg-info">
+                                    <p class="card-text">The branch manager will be responsible for conducting a survey of the branch area. They will use secondary data to determine the poverty level in the area that the branch will serve. Key indicators that the branch manager will focus on include population density, geographic conditions, the presence of public sector banks, sources of cash flow in the area, the presence of microfinance institutions, the potential number of clients within the radius of operation and further scope for new branches nearby</p>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-header"><h3>Village Survey</h3></div>
+                                <div class="card-body text-white bg-success">
+                                    <h5 class="card-title">Success card title</h5>
+                                    <p class="card-text">The field staff will conduct a village survey using rapid rural appraisal techniques and by meeting with the villagers. During the survey, the field staff will try to get an idea of the main sources of income for the poor, including agricultural labor and rural artisans, as well as the demographic profile of the community. They will also take into account social conditions, totems and taboos (especially in tribal areas).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-lg-12 mb-4">
+                            <h4> Step 2 - Business Meeting</h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-header"><h3>Group Meeting</h3></div>
+                                <div class="card-body text-white bg-warning">
+                           
+                                    <p class="card-text">Following a successful meeting with the villagers, the staff engaged with potential clients and requested them to arrange a Joint Liability Group (JLG). Subsequently, the staff visited each individual house belonging to the group members for a physical verification of KYC (Know Your Customer) details. They also facilitated the completion of household forms at the doorstep of each household.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-header"><h3>Training</h3></div>
+                                <div class="card-body text-white bg-info">
+                                    <p class="card-text">The training program will primarily emphasize understanding signatures and acquiring knowledge about various financial products and their respective purposes. The training will predominantly focus on products such as credit, savings, insurance, pension, and medical claim policies. The training will span across four days, and it is mandatory for all members to attend the training for the full duration. Each day, the staff will reinforce important aspects such as interest rates, RBI regulations for lenders and borrowers, credit bureaus, loan repayment timelines, loan size, meeting procedures, and pre-settlement conditions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-header"><h3>Group Recognition</h3></div>
+                                <div class="card-body text-white bg-success">
+                                    <p class="card-text">The branch manager will verify that every member present for the Group Recognition Test (GRT) has successfully completed the four-day training program. It is essential for all members to be familiar with the loan application and repayment procedures. The branch manager will ensure that the entire group has a collective understanding of financial literacy. During the household (HH) checks, the manager will match the KYC forms to ensure they are filled out completely and accurately. If any information is missing, the manager will take responsibility for completing the form, as they are accountable for identifying and rectifying any mistakes or errors in the form after conducting the HH and farm inspections.</p>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-12">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-lg-12 mb-4">
+                            <h4> Step 3 - Loan Approval</h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-header"><h3>Credit Bureau</h3></div>
+                                <div class="card-body text-white bg-warning">
+                           
+                                    <p class="card-text">From the list 3rd lender less tha 1.5L for IGL(Income Generating Loan) Rural and Urban limit follow in IGL.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-header"><h3>JLG Loan Approval</h3></div>
+                                <div class="card-body text-white bg-info">
+                                    <p class="card-text">The Branch Manager (BM) will hold the final authority to approve high-value loans. The Branch Manager (BM) will involved in the approval process, considering factors such as the client's business and their ability to repay the loan during challenging times or in the event of project failure. It is essential for the client to demonstrate alternate sources of funds or income that can be utilized for repayment during such circumstances. The decision to approve the loan will be made by the BM.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-lg-12 mb-4">
+                            <h4> Step 3 - Business Plan</h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-header"><h3>Disbursement</h3></div>
+                                <div class="card-body text-white bg-warning">
+                           
+                                    <p class="card-text">Disbursements will be carried out at the branch, and the funds will be provided to the member's husband or guardian. In the case of widows, divorcees, or married daughters, the guardian will receive the disbursement on their behalf. Unmarried girls are not permitted to participate in the program.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-header"><h3>Loan Utilization Check(LUC)</h3></div>
+                                <div class="card-body text-white bg-info">
+                                    <p class="card-text">The Branch Manager (BM) will hold the final authority to approve high-value loans. The Branch Manager (BM) will involved in the approval process, considering factors such as the client's business and their ability to repay the loan during challenging times or in the event of project failure. It is essential for the client to demonstrate alternate sources of funds or income that can be utilized for repayment during such circumstances. The decision to approve the loan will be made by the BM.</p>
+                                </div>
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                 
+                </div>
+               
+            </div>
+        </div>
+    </section>
+   
+{% endblock %}

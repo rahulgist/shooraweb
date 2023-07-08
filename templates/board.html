@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+        {% if request.path == '/'%}
+        <!-- Inspiro Slider -->
+        <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="2600" data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
+            {% for n in sliders %}
+            <!-- Slide 1 -->
+            <div class="slide background-image" style="background-image:url('/media/{{n.slider_images}}');">
+                <div class="bg-overlay"></div>
+                <div class="container">
+                    <div class="slide-captions text-center">
+                        <!-- Captions -->
+                        {% comment %} <h2 class="text-uppercase text-medium text-light">{{n.slider_title}}</h2> {% endcomment %}
+                        {% if n.slider_short_description %}<p class="lead text-light">{{n.slider_short_description}}</p> {% endif %}
+
+                        <!-- end: Captions -->
+                    </div>
+                </div>
+            </div>
+            <!-- end: Slide 1 -->
+            {% endfor %}
+
+            <!-- end: Slide 2 -->
+        </div>
+        <!--end: Inspiro Slider -->
+        {% endif %}
+        <!-- BOXES -->
+        <section class="p-t-60 p-b-40">
+            <div class="container">
+                <div class="row">
+                    {% for n in board %}
+                    <div class="col-lg-3" style="border-top: 0.3em solid #980000;">
+                        <div class="post-thumbnail">
+                            <div class="post-thumbnail-entry">
+                                <!-- <i class="fa fa-user fa-8x"></i> -->
+                                <div class="post-thumbnail-content">
+                                    
+                                    <h3><a href="#">{{n.member_name}}</a></h3>
+                                    <span class="post-category" style="font-size: 16px;color:{{n.member_color}};">{{n.member_designation}}</span>
+                                    <hr>
+                                    <p style="text-align: justify;">{{n.member_profile | safe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- end: BOXES -->
+{% endblock %}
